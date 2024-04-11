@@ -1,5 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
+import cors from 'cors';
 
 import pokemonsRoute from './routes/pokemon.route';
 
@@ -9,6 +10,11 @@ const port = process.env.PORT || 3000;
 
 // MIDDLEWARES
 app.use(express.json());
+app.use(cors({
+  origin: '*', // Wildcard is NOT for Production
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}));
 dotenv.config();
 
 

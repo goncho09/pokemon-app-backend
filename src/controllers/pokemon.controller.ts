@@ -10,11 +10,15 @@ export const getPokemons:RequestHandler= async (req,res)=>{
 }
 
 export const getPokemonByIdOrName:RequestHandler= async (req,res)=>{
-    const {id} = req.params;
-    const data =  await fetch(`${API_LINK}/pokemon/${id}`);
-    const dataJson = await data.json();
-    return res.json(dataJson);
-}
+    try {
+        const {id} = req.params;
+        const data =  await fetch(`${API_LINK}/pokemon/${id}`);
+        const dataJson = await data.json();
+        return res.status(200).json(dataJson);
+    } catch (error) {
+        return res.status(404).json({error});
+    }
+};
 
 export const getPokemonsByType:RequestHandler= async (req,res)=>{
     const {id} = req.params;
