@@ -1,11 +1,11 @@
-import express, { Express, Request, Response } from "express";
+import express from "express";
 import dotenv from "dotenv";
 import cors from 'cors';
 
-import pokemonsRoute from './routes/pokemon.route';
+import pokemonsRoute from './routes/pokemon.route.js';
 
 
-const app: Express = express();
+const app = express();
 const port = process.env.PORT || 3000;
 
 // MIDDLEWARES
