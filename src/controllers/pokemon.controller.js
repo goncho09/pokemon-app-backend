@@ -14,7 +14,10 @@ export const getPokemonByIdOrName= async (req,res)=>{
         const dataJson = await data.json();
         return res.status(200).json(dataJson);
     } catch (error) {
-        return res.status(404).json({error});
+        return res.status(404).json({
+            status:404,
+            error:"Este pokemon no existe."
+        });
     }
 };
 
